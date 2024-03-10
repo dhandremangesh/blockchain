@@ -1,0 +1,45 @@
+# Launch the network.
+
+Navigate to the fabcar subdirectory within your local clone (curl -sSL 
+http://bit.ly/2ysbOFE | bash -s 1.4.4 ) of the fabric-samples repo.
+
+cd fabric-samples/fabcar
+./startFabric.sh javascript
+
+# Install the application.
+
+cd javascript 
+npm install
+ls
+
+# Enrolling the admin user 
+
+node enrollAdmin.js 
+
+# Register and enroll an application user
+
+node registerUser.js 
+
+# Querying the ledger
+
+node query.js
+node invoke.js
+./networkDown.sh
+const result = await contract.evaluateTransaction('queryCar', 'CAR4');
+node query.js
+
+# Updating the ledger
+
+await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+node invoke.js 
+await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+const result = await contract.evaluateTransaction('queryCar', 'CAR4'); To this:
+const result = await contract.evaluateTransaction('queryCar', 'CAR12'); Save once again, then query:
+node query.js
+await contract.submitTransaction('changeCarOwner', 'CAR12', 'Dave');
+node invoke.js
+node query.js
+./networkDown.sh
+
+/n
+

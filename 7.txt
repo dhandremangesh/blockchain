@@ -1,0 +1,77 @@
+Pract 7:
+A]A Simple Client class that generates private and public keys by 
+# using built in Python RSA algorithm
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+
+class SimpleClient:
+    def __init__(self):
+        self.private_key = None
+        self.public_key = None
+
+    def generate_keys(self):
+        # Generate a new private key
+        self.private_key = rsa.generate_private_key(
+            public_exponent=65537,
+            key_size=2048
+        )
+
+        # Extract the public key from the private key
+        self.public_key = self.private_key.public_key()
+
+    def save_keys(self, private_key_file="private_key.pem", public_key_file="public_key.pem"):
+        # Serialize the private key to PEM format and save to a file
+        with open(private_key_file, "wb") as f:
+            f.write(self.private_key.private_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PrivateFormat.PKCS8,
+                encryption_algorithm=serialization.NoEncryption()
+            ))
+
+        # Serialize the public key to PEM format and save to a file
+        with open(public_key_file, "wb") as f:
+            f.write(self.public_key.public_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PublicFormat.SubjectPublicKeyInfo
+            ))
+
+# Example usage:
+client = SimpleClient()
+client.generate_keys()
+client.save_keys()
+print(client)
+
+
+7B] A transaction class to send and receive amount and use it 
+class Transaction:
+    def __init__(self, sender, receiver):
+        self.sender = sender
+        self.receiver = receiver
+
+    def send(self, amount):
+        if self.sender.balance >= amount:
+            self.sender.balance -= amount
+            self.receiver.balance += amount
+            print(f"{amount} units sent from {self.sender.name} to {self.receiver.name}")
+        else:
+            print("Insufficient balance")
+
+class Account:
+    def __init__(self, name, balance=0):
+        self.name = name
+        self.balance = balance
+
+    def display_balance(self):
+        print(f"Balance of {self.name}: {self.balance}")
+
+# Example usage:
+account1 = Account("Alice", 1000)
+account2 = Account("Bob", 500)
+
+transaction = Transaction(account1, account2)
+transaction.send(200)
+
+account1.display_balance()
+account2.display_balance()
+
+/n

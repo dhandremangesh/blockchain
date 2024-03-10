@@ -1,0 +1,40 @@
+# Setup the Blockchain Network.
+
+mkdir hyper__ledger
+cd hyper__ledger
+git clone https://github.com/IBM/blockchain-application-using-fabric-java-sdk
+
+# Giving Permission for clone folder.
+
+Desktop/hyper__ledger $ chmod 777 -R blockchain-application-using-fabric-java-sdk
+
+# Creating and starting a Network.
+
+Desktop/hyper__ledger/blockchain-application-using-fabric-java-sdk/network$ cd network
+Desktop/hyper__ledger/blockchain-application-using-fabric-java-sdk/network$ chmod +x build.sh
+Desktop/hyper__ledger/blockchain-application-using-fabric-java-sdk/network$ sudo ./build.sh
+
+# Buiding Client Side.
+
+Desktop/hyper__ledger/blockchain-application-using-fabric-java-sdk/network$ cd ../java
+Desktop/hyper ledger/blockchain-application-using-fabric-java-sdk/java$ mvn install
+cd target
+cp blockchain-java-sdk-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
+blockchain- client.jar 
+cp blockchain-client.jar ../../network_resources
+
+#  Create and Initialize the channel.
+
+cd ../../network_resources
+java -cp blockchain-client.jar org.example.network.CreateChannel
+
+# Deploy and Instantiate the chaincode.
+
+java -cp blockchain-client.jar org.example.network.DeployInstantiateChaincode
+
+# Register and enroll users.
+
+java -cp blockchain-client.jar org.example.user.RegisterEnrollUser
+
+/n
+

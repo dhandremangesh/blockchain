@@ -1,0 +1,34 @@
+PRACT 8
+Step 1: login as root user run below commad and reset passoword as 'root'
+1.sudo passwd root
+step 2:su 
+step3:go version
+step 4:go version
+step 5:docker-compose --version
+step 6:node -v
+step 7:npm -v
+step 8:docker stop $(docker ps -a -q)
+step 9:docker rm $(docker ps -a -q)
+step 10:docker rmi $(docker images -q) -f
+step 11:export GOPATH=$HOME/go
+step 12:pwd
+step 13:cd $GOPATH
+step 14:mkdir src
+step 15:cd src
+step 16:ls
+step 17:mkdir github.com
+step 18:cd github.com
+step 19:mkdir hyperledger
+step 20:ls
+step 21:cd hyperledger
+step 22:cd $GOPATH/src/githum.com/hyperledger/
+step 23: git clone https://github.com/hyperledger/fabric-samples.git
+step 24:cd fabric-samples
+step 25:git checkout release-1.4
+step 26:cd fabric-chaincode-evm
+step 27:cd $GOPATH/src/github.com/hyperledger/fabric-samples/first-network
+step 28:ls
+step 29:chmod +x docker-compose-cli.yaml
+step 30:gedit docker-compose-cli.yaml
+
+/n

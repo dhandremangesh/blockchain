@@ -1,0 +1,11 @@
+Step 1 :curl -O https://hyperledger.github.io/composer/latest/prereqs-ubuntu.sh
+step2 :chmod u+x prereqs-ubuntu.sh
+Step 3 :./prereqs-ubuntu.sh
+Step4 : touch .bash_profile
+Step 5 :curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+Step 6 :nvm install --lts
+Step 7 :nvm use --lts
+Step 8 :node --version
+Step 9 :sudo apt install docker docker-compose
+NOTE: if step 6 and 7 does not work directly run the step 8
+/n

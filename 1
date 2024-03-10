@@ -1,0 +1,13 @@
+sudo apt install docker docker-compose
+sudo apt install nodejs npm 
+sudo apt install default-jdk default-jre
+sudo nano /etc/environment
+JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/bin/java"
+source /etc/environment
+echo $JAVA_HOME
+sudo apt install maven
+mvn -v
+sudo apt install python curl golang-go
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.4
+
+\n
